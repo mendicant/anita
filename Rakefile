@@ -4,7 +4,7 @@ require "sqlite3"
 desc "Start bot (runs setup if needed)."
 task "start" => ["setup"] do
   FileUtils.cd(File.dirname(__FILE__)) do
-    system "bundle exec ruby bin/anita"
+    system "bundle exec foreman start"
   end
 end
 
