@@ -17,7 +17,7 @@ rake start
 
 When running `rake start` anita will install her dependencies, help you create
 a default configuration and initialize the database. She will then start up
-both her bot and web features.
+both her bot and web interfaces.
 
 To access anita's logs via her web interface navigate to:
   `http://localhost:5000/:channel/:from..:to.(html|json|markdown)`
