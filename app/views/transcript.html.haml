@@ -1,0 +1,16 @@
+!!!
+%html
+  %head
+    %title Transcript
+  %body
+    %h1= "##{channel}"
+    %table
+      %thead
+        %td Timestamp
+        %td Nick
+        %td Text
+      - messages.each do |message|
+        %tr
+          %td= message["timestamp"]
+          %td= message["nick"]
+          %td= message["text"]
