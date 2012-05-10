@@ -8,6 +8,7 @@ gem "haml",               "~> 3.1.5"
 gem "liquid",             "~> 2.3.0"
 
 group :development do
-  gem "foreman", "~> 0.46.0"
-  gem "rake",    "~> 0.9.2.2"
+  gem "foreman",    "~> 0.46.0"
+  gem "rake",       "~> 0.9.2.2"
+  gem "capistrano", "~> 2.12.0"
 end
