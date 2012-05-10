@@ -11,8 +11,13 @@ spec/reports
 test/tmp
 test/version_tmp
 tmp
+Gemfile.lock
 
 # YARD artifacts
 .yardoc
 _yardoc
 doc/
+
+# Project specific
+config/environment.rb
+data
