@@ -17,14 +17,13 @@ rake start
 
 When running `rake start` anita will install her dependencies, help you create
 a default configuration and initialize the database. She will then start up
-and begin logging.
+both her bot and web features.
 
 Roadmap
 -------
 
 1. Get anita logging channels. (done)
-2. Create a web service to retrieve logs.
-   - Provide html, json and markdown formats.
+2. Create a web service to retrieve logs. (done)
 
 Contributing
 ------------
