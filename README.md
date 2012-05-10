@@ -3,8 +3,8 @@ Anita
 
 ![Anita Borg](http://i.imgur.com/XOY0N.jpg)
 
-Mendicant Universities IRC Bot. Named in honor of
-[Anita Borg](http://en.wikipedia.org/wiki/Anita_Borg).
+[Anita](http://en.wikipedia.org/wiki/Anita_Borg), Mendicant Universities IRC
+Bot.
 
 Usage
 -----
