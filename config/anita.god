@@ -2,7 +2,7 @@ PROJECT_ROOT = File.dirname(File.dirname(__FILE__))
 
 God.watch do |w|
   script          = "BUNDLE_GEMFILE=#{PROJECT_ROOT}/Gemfile " +
-                    "bundle exec #{PROJECT_ROOT}/bin/anita-daemon.rb"
+                    "bundle exec #{PROJECT_ROOT}/bin/anita-daemon"
   w.name          = "anita"
   w.group         = "mendicant"
   w.interval      = 60.seconds
