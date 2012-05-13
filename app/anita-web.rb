@@ -16,6 +16,10 @@ class AnitaWeb < Sinatra::Base
     mime_type :markdown, "text/plain"
   end
 
+  get "/" do
+    "Oh hai, I'm Anita :]"
+  end
+
   get "/:channel/:from..:to" do |channel, from, to|
     from = DateTime.parse(from).to_s
     to   = DateTime.parse(to).to_s
