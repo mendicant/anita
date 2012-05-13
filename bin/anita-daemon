@@ -2,6 +2,7 @@
 
 require "daemons"
 require "fileutils"
+require "bundler/setup"
 
 executable = File.expand_path("../anita", __FILE__)
 
