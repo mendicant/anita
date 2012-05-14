@@ -2,7 +2,6 @@ require "sinatra/base"
 require "date"
 require "json"
 require "haml"
-require "liquid"
 
 require_relative "../lib/anita"
 
@@ -36,10 +35,7 @@ class AnitaWeb < Sinatra::Base
     when :json
       messages.to_json
     when :markdown
-      liquid(
-        :transcript,
-        locals: {channel: messages.channel, messages: messages}
-      )
+      erb(:transcript, locals: {messages: messages})
     else
       raise Sinatra::NotFound
     end

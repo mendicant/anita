@@ -4,7 +4,6 @@ gem "cinch",              "~> 2.0.2"
 gem "sqlite3",            "~> 1.3.6"
 gem "sinatra",            "~> 1.3.2"
 gem "haml",               "~> 3.1.5"
-gem "liquid",             "~> 2.3.0"
 gem "daemons",            "~> 1.1.8"
 
 group :development do
