@@ -21,9 +21,9 @@ class AnitaWeb < Sinatra::Base
     case format
     when "html"
       haml(:transcript, locals: {channel: channel, messages: messages})
-    when "json"
+    when "json", "js"
       messages.to_json
-    when "markdown"
+    when "markdown", "md"
       liquid(:transcript, locals: {channel: channel, messages: messages})
     else
       raise Sinatra::NotFound
