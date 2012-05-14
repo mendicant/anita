@@ -1,5 +1,4 @@
 require "fileutils"
-require "sqlite3"
 
 desc "Start bot (runs setup if needed)."
 task "start" => ["setup"] do
@@ -9,15 +8,13 @@ task "start" => ["setup"] do
 end
 
 desc "Run all setup tasks."
-task "setup" => ["setup:configuration", "setup:database"]
+task "setup" => ["setup:dependencies", "setup:configuration", "setup:database"]
 
 desc "Install dependencies."
 task "setup:dependencies" do
   FileUtils.cd(File.dirname(__FILE__)) do
-    unless File.exists?("Gemfile.lock")
-      system("gem install bundler")
-      system("bundle install")
-    end
+    system("gem install bundler")
+    system("bundle install")
   end
 end
 
@@ -36,7 +33,8 @@ task "setup:configuration" do
 end
 
 desc "Initialize database."
-task "setup:database" => ["setup:configuration", "setup:dependencies"] do
+task "setup:database" => ["setup:dependencies", "setup:configuration"] do
+  require "sqlite3"
   require_relative "config/environment"
 
   dir = File.dirname(Anita::Config::DB)
