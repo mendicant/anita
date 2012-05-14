@@ -12,7 +12,7 @@ module Anita
       Read = DB.prepare(
         "SELECT timestamp, channel, nick, text
          FROM transcripts
-         WHERE DATETIME(timestamp) BETWEEN :from AND :to
+         WHERE DATETIME(timestamp) BETWEEN DATETIME(:from) AND DATETIME(:to)
          ORDER BY timestamp ASC"
       )
     end
