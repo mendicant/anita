@@ -10,11 +10,14 @@ module Anita
       )
 
       Read = DB.prepare(
-        "SELECT timestamp, channel, nick, text
+        %{SELECT
+          strftime('%Y-%m-%d %H:%M:%S UTC', timestamp)
+            as "humanized-timestamp",
+          timestamp, channel, nick, text
          FROM transcripts
          WHERE channel = :channel
          AND DATETIME(timestamp) BETWEEN DATETIME(:from) AND DATETIME(:to)
-         ORDER BY DATETIME(timestamp) ASC"
+         ORDER BY DATETIME(timestamp) ASC}
       )
     end
   end
