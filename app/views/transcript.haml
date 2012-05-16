@@ -11,6 +11,6 @@
         %td Text
       - messages.each do |message|
         %tr
-          %td= message["timestamp"]
+          %td= message["timestamp"].utc
           %td= message["nick"]
           %td= message["text"]
