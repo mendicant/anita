@@ -10,10 +10,11 @@ module Anita
       )
 
       Read = DB.prepare(
-        "SELECT timestamp, channel, nick, text
+      %{ SELECT strftime("%Y-%m-%d %H:%M:%S", timestamp, "utc") AS formatted_timestamp,
+                channel, nick, text
          FROM transcripts
          WHERE DATETIME(timestamp) BETWEEN DATETIME(:from) AND DATETIME(:to)
-         ORDER BY timestamp ASC"
+         ORDER BY timestamp ASC }
       )
     end
   end

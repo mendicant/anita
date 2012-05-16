@@ -3,7 +3,7 @@
 <br/>
 
 <% messages.each do |message| %>
-  *<%= message["timestamp"].utc %>* - **<%= message["nick"] %>** - <%= message["text"] %>
+  *<%= message["formatted_timestamp"] %>* - **<%= message["nick"] %>** - <%= message["text"] %>
   <br/>
   <br/>
 <% end %>
