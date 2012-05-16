@@ -20,7 +20,15 @@ a default configuration and initialize the database. She will then start up
 both her bot and web interfaces.
 
 To access anita's logs via her web interface navigate to:
-  `http://localhost:5000/:channel/:from..:to(.html|.json|.js|.markdown|.md)`
+  `http://localhost:5000/:channel/:from..:to`
+  
+By default Anita will server you up a nice html view of your request. However
+you can also provide an optional extension to get your request formatted
+differently. Below is a list of the extension Anita currently knows.
+
+* markdown | md -- This produces markdown formatted output you can copy/paste
+* (blank) | html -- The default html view
+* json | js -- JSON formatted raw data
 
 Roadmap
 -------
