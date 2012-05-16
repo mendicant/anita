@@ -27,9 +27,10 @@ By default Anita will server you up a nice html view of your request. However
 you can also provide an optional extension for alternate formats. Below is a
 list of the extensions Anita currently knows.
 
-- markdown | md -- This produces markdown formatted output you can copy/paste
-- html | (blank) -- The default html view
-- json | js -- JSON formatted raw data
+- **.markdown** -- This produces markdown formatted output you can copy/paste
+  (short version: .md)
+- **.html** -- The default html view
+- **.json** -- JSON formatted raw data (short version: .js)
 
 Roadmap
 -------
