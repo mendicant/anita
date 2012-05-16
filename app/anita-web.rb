@@ -62,6 +62,11 @@ class AnitaWeb < Sinatra::Base
       .execute("from" => from, "to" => to)
       .to_a
 
+    messages.each do |m|
+      ts = DateTime.parse(m["timestamp"])
+      m["humanized-timestamp"] = ts.strftime("%Y-%m-%d %H:%M:%S UTC")
+    end
+
     messages.define_singleton_method(:channel) do
       channel
     end
