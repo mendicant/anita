@@ -54,7 +54,8 @@ task "setup:database" => ["setup:dependencies", "setup:configuration"] do
       description TEXT NOT NULL,
       channel     TEXT NOT NULL,
       started_at  TEXT NOT NULL,
-      ended_at    TEXT NOT NULL
+      ended_at    TEXT NOT NULL,
+      UNIQUE(description)
     )"
   )
 end
