@@ -32,6 +32,12 @@ list of the extensions Anita currently knows.
 - **.html** -- The default html view
 - **.json** -- JSON formatted raw data (short version: .js)
 
+If you know the name of a past, present (or future) activity you can do this:
+
+  `http://localhost:5000/activities/:description`
+
+This URI takes the same, optional, extensions.
+
 Roadmap
 -------
 
