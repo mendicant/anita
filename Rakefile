@@ -49,4 +49,12 @@ task "setup:database" => ["setup:dependencies", "setup:configuration"] do
       text      TEXT NOT NULL
     )"
   )
+  db.execute("
+    CREATE TABLE IF NOT EXISTS activities (
+      description TEXT NOT NULL,
+      channel     TEXT NOT NULL,
+      started_at  TEXT NOT NULL,
+      ended_at    TEXT NOT NULL
+    )"
+  )
 end
