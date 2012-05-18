@@ -16,6 +16,14 @@ module Anita
       messages
     end
 
+    def self.load_from_activity(activity)
+      channel = activity["channel"]
+      from    = activity["started_at"]
+      to      = activity["ended_at"]
+
+      Messages.load(channel, from, to)
+    end
+
     def self.save(m)
       Anita::Storage::Statements::Transcripts::Save
         .execute(

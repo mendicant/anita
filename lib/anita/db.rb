@@ -4,6 +4,14 @@ module Anita
     DB.results_as_hash = true
 
     module Statements
+      module Activities
+        Load = DB.prepare(
+          "SELECT description, channel, started_at, ended_at
+           FROM activities
+           WHERE description = :description"
+        )
+      end
+
       module Transcripts
         Save = DB.prepare(
           "INSERT INTO transcripts (timestamp, channel, nick, text)

@@ -26,6 +26,18 @@ class AnitaWeb < Sinatra::Base
     render_transcript(messages)
   end
 
+  get "/activities/:description.:format" do |description, ext|
+    messages = messages_for_activity(description)
+    format   = format_for(ext)
+
+    render_transcript(messages, format)
+  end
+
+  get "/activities/:description", provides: "html" do |description|
+    messages = messages_for_activity(description)
+    render_transcript(messages)
+  end
+
   private
 
   def render_transcript(messages, format = :html)
@@ -60,5 +72,10 @@ class AnitaWeb < Sinatra::Base
     to   = DateTime.parse(to).to_s
 
     Anita::Messages.load(channel, from, to)
+  end
+
+  def messages_for_activity(description)
+    activity = Anita::Activities.load(description)
+    Anita::Messages.load_from_activity(activity)
   end
 end
