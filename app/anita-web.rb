@@ -59,14 +59,6 @@ class AnitaWeb < Sinatra::Base
     from = DateTime.parse(from).to_s
     to   = DateTime.parse(to).to_s
 
-    messages = Anita::Storage::Statements::Read
-      .execute("channel" => channel, "from" => from, "to" => to)
-      .to_a
-
-    messages.define_singleton_method(:channel) do
-      channel
-    end
-
-    messages
+    Anita::Messages.load(channel, from, to)
   end
 end
