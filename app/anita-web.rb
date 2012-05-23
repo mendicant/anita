@@ -14,33 +14,42 @@ class AnitaWeb < Sinatra::Base
     "Oh hai, I'm Anita :]"
   end
 
-  get "/:channel/:from..:to.:format" do |channel, from, to, ext|
-    messages = messages_for(channel, from, to)
-    format   = format_for(ext)
-
-    render_transcript(messages, format)
+  get "/:channel/:from..:to.:format" do
+    render_transcript(params)
   end
 
-  get "/:channel/:from..:to", provides: "html" do |channel, from, to|
-    messages = messages_for(channel, from, to)
-    render_transcript(messages)
+  get "/:channel/:from..:to", provides: "html" do
+    render_transcript(params)
   end
 
-  get "/activities/:description.:format" do |description, ext|
-    messages = messages_for_activity(description)
-    format   = format_for(ext)
-
-    render_transcript(messages, format)
+  get "/activities/:description.:format" do
   end
 
-  get "/activities/:description", provides: "html" do |description|
-    messages = messages_for_activity(description)
-    render_transcript(messages)
+  get "/activities/:description", provides: "html" do
+    render_activities(params)
   end
 
   private
 
-  def render_transcript(messages, format = :html)
+  def render_transcript(options)
+    channel = options[:channel]
+    from    = options[:from]
+    to      = options[:to]
+
+    messages = messages_for(channel, from, to)
+    render_messages(messages, options)
+  end
+
+  def render_activities(options)
+    description = options[:description]
+
+    messages = messages_for_activity(description)
+    render_messages(messages, options)
+  end
+
+  def render_messages(messages, options)
+    format = format_for(options[:format] || "html")
+
     case format
     when :html
       haml(:transcript, locals: {messages: messages})
