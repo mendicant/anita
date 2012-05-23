@@ -1,2 +1,2 @@
-web: bundle exec rackup -p $PORT
+web: bundle exec shotgun -p $PORT
 bot: bundle exec ruby bin/anita
