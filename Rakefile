@@ -8,7 +8,7 @@ task "start" => ["setup"] do
 end
 
 desc "Run all setup tasks."
-task "setup" => ["setup:dependencies", "setup:configuration", "setup:database"]
+task "setup" => ["setup:dependencies", "setup:configuration"]
 
 desc "Install dependencies."
 task "setup:dependencies" do
@@ -30,23 +30,4 @@ task "setup:configuration" do
 
     system("$EDITOR #{dir}/environment.rb")
   end
-end
-
-desc "Initialize database."
-task "setup:database" => ["setup:dependencies", "setup:configuration"] do
-  require "sqlite3"
-  require_relative "config/environment"
-
-  dir = File.dirname(Anita::Config::DB)
-  FileUtils.mkdir(dir) unless Dir.exists?(dir)
-
-  db = SQLite3::Database.new(Anita::Config::DB)
-  db.execute("
-    CREATE TABLE IF NOT EXISTS transcripts (
-      timestamp TEXT NOT NULL,
-      channel   TEXT NOT NULL,
-      nick      TEXT NOT NULL,
-      text      TEXT NOT NULL
-    )"
-  )
 end
