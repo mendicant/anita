@@ -7,8 +7,6 @@ require "cgi"
 require_relative "../lib/anita"
 
 class AnitaWeb < Sinatra::Base
-  InvalidDateString = BasicObject.new
-
   configure do
     mime_type :markdown, "text/plain"
   end
