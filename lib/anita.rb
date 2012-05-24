@@ -6,4 +6,5 @@ require_relative "../config/environment"
 
 require_relative "anita/db"
 require_relative "anita/messages"
+require_relative "anita/activities"
 require_relative "anita/bot"

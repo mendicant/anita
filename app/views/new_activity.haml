@@ -1,0 +1,26 @@
+!!!
+%html
+  %head
+    %title New Activity
+  %body
+    - errors.each do |error|
+      %h3= error
+    %form(action="/activity/new" method="post")
+      %p
+        %label(for="description") Description
+        %input#description(name="description" type="text")
+
+      %p
+        %label(for="channel") Channel
+        %input#channel(name="channel" type="text")
+
+      %p
+        %label(for="started_at") Started At
+        %input#started_at(name="started_at" type="text")
+
+      %p
+        %label(for="ended_at") Ended At
+        %input#ended_at(name="ended_at" type="text")
+
+      %p
+        %input#submit(type="submit" value="Create")
