@@ -38,6 +38,8 @@ If you know the name of a past, present (or future) activity you can do this:
 
 This URI takes the same, optional, extensions.
 
+To create a new activity, visit `/activity/new`
+
 Roadmap
 -------
 

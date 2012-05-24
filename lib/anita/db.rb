@@ -10,6 +10,11 @@ module Anita
            FROM activities
            WHERE description = :description"
         )
+
+        Create = DB.prepare(
+          "INSERT INTO activities (description, channel, started_at, ended_at)
+           VALUES (:description, :channel, :started_at, :ended_at)"
+        )
       end
 
       module Transcripts

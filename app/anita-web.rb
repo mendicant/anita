@@ -2,10 +2,13 @@ require "sinatra/base"
 require "date"
 require "json"
 require "haml"
+require "cgi"
 
 require_relative "../lib/anita"
 
 class AnitaWeb < Sinatra::Base
+  InvalidDateString = BasicObject.new
+
   configure do
     mime_type :markdown, "text/plain"
   end
@@ -23,10 +26,19 @@ class AnitaWeb < Sinatra::Base
   end
 
   get "/activities/:description.:format" do
+    render_activities(params)
   end
 
   get "/activities/:description", provides: "html" do
     render_activities(params)
+  end
+
+  get "/activity/new" do
+    haml(:new_activity, locals: {errors: []})
+  end
+
+  post "/activity/new" do
+    create_activity(params)
   end
 
   private
@@ -84,7 +96,29 @@ class AnitaWeb < Sinatra::Base
   end
 
   def messages_for_activity(description)
-    activity = Anita::Activities.load(description)
+    description = CGI.unescape(description)
+    activity    = Anita::Activities.load(description)
+
+    raise Sinatra::NotFound if activity.nil?
+
     Anita::Messages.load_from_activity(activity)
+  end
+
+  def create_activity(options)
+    description = options["description"]
+    channel     = options["channel"]
+    started_at  = options["started_at"]
+    ended_at    = options["ended_at"]
+
+    success, errors = Anita::Activities.create(
+      description, channel, started_at, ended_at
+    )
+
+    if success
+      description = CGI.escape(description)
+      redirect("/activities/#{description}")
+    else
+      haml(:new_activity, locals: {errors: errors})
+    end
   end
 end
