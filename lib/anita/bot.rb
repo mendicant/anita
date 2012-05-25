@@ -12,7 +12,7 @@ module Anita
       nick    = message.user.nick
       text    = message.message
 
-      Transcript.record(channel, nick, text)
+      Transcripts.record(channel, nick, text)
     end
   end
 end
