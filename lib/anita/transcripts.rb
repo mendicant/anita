@@ -1,6 +1,7 @@
 module Anita
   class Transcripts
     extend Forwardable
+    include Enumerable
 
     def self.record(channel, nick, text)
       Messages.create(
