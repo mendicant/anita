@@ -7,8 +7,12 @@ module Anita
       c.channels = Anita::Config::CHANNELS
     end
 
-    on :channel do |message|
-      Messages.save(message)
+    on(:channel) do |message|
+      channel = message.channel
+      nick    = message.user.nick
+      text    = message.message
+
+      Transcript.record(channel, nick, text)
     end
   end
 end

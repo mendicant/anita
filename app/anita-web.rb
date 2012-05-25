@@ -7,35 +7,38 @@ require_relative "../lib/anita"
 
 class AnitaWeb < Sinatra::Base
   configure do
-    mime_type :markdown, "text/plain"
+    mime_type(:markdown, "text/plain")
   end
 
-  get "/" do
+  get("/") do
     "Oh hai, I'm Anita :]"
   end
 
-  get "/:channel/:from..:to.:format" do |channel, from, to, ext|
-    messages = messages_for(channel, from, to)
-    format   = format_for(ext)
-
-    render_transcript(messages, format)
+  get("/:channel/:from..:to.:format") do
+    render_transcript(params)
   end
 
-  get "/:channel/:from..:to", provides: "html" do |channel, from, to|
-    messages = messages_for(channel, from, to)
-    render_transcript(messages)
+  get("/:channel/:from..:to", provides: "html") do
+    render_transcript(params)
   end
 
   private
 
-  def render_transcript(messages, format = :html)
+  def render_transcript(options)
+    channel = "##{options[:channel]}"
+    from    = options[:from]
+    to      = options[:to]
+    format  = format_for(options[:format] || "html")
+
+    transcript = Anita::Transcripts.find(channel, from, to)
+
     case format
     when :html
-      haml(:transcript, locals: {messages: messages})
+      haml(:transcript, locals: {transcript: transcript})
     when :json
-      messages.to_json
+      transcript.to_json
     when :markdown
-      erb(:transcript, locals: {messages: messages})
+      erb(:transcript, locals: {transcript: transcript})
     else
       raise Sinatra::NotFound
     end
@@ -52,21 +55,5 @@ class AnitaWeb < Sinatra::Base
     else
       :unknown
     end
-  end
-
-  def messages_for(channel, from, to)
-    channel = "##{channel}"
-    from = DateTime.parse(from).to_s
-    to   = DateTime.parse(to).to_s
-
-    messages = Anita::Storage::Statements::Read
-      .execute("channel" => channel, "from" => from, "to" => to)
-      .to_a
-
-    messages.define_singleton_method(:channel) do
-      channel
-    end
-
-    messages
   end
 end

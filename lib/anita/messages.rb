@@ -1,14 +1,23 @@
 module Anita
-  module Messages
-    def self.save(m)
-      Storage::Statements::Save.execute(
-        "timestamp" => Time.now.utc.to_datetime.to_s,
-        "channel"   => m.channel.to_s,
-        "nick"      => m.user.to_s,
-        "text"      => m.message.encode(
-                         "UTF-8", invalid: :replace, undef: :replace
-                       )
-      )
+  class Messages
+    include DataMapper::Resource
+
+    storage_names[:default] = "messages"
+
+    property :timestamp, DateTime, key: true
+    property :channel,   String,   key: true
+    property :nick,      String,   key: true
+    property :text,      Text,     lazy: false
+
+    def humanized_timestamp
+      timestamp.strftime("%Y-%m-%d %H:%M:%S UTC")
+    end
+
+    def to_h
+      {
+        timestamp: timestamp, channel: channel, nick: nick, text: text,
+        humanized_timestamp: humanized_timestamp
+      }
     end
   end
 end

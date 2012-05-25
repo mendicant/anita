@@ -1,9 +1,9 @@
-## <%= messages.channel %>
+## <%= transcript.channel %>
 <br/>
 <br/>
 
-<% messages.each do |message| %>
-  *<%= message["humanized-timestamp"] %>* - **<%= message["nick"] %>** - <%= message["text"] %>
+<% transcript.each do |message| %>
+  *<%= message.humanized_timestamp %>* - **<%= message.nick %>** - <%= message.text %>
   <br/>
   <br/>
 <% end %>
