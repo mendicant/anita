@@ -2,6 +2,8 @@ module Anita
   class Messages
     include DataMapper::Resource
 
+    storage_names[:default] = "messages"
+
     property :timestamp, DateTime, key: true
     property :channel,   String,   key: true
     property :nick,      String,   key: true
