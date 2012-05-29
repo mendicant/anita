@@ -1,8 +1,6 @@
 require "cinch"
 require "dm-core"
 require "dm-migrations"
-require "dm-validations"
-require "dm-sqlite-adapter"
 require "forwardable"
 
 require_relative "../config/environment"
