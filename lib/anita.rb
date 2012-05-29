@@ -8,7 +8,7 @@ require_relative "anita/messages"
 require_relative "anita/transcripts"
 
 module Anita
-  def self.start_db
+  def self.setup_db
     DataMapper.setup(:default, "sqlite://#{Anita::Config::DB}")
     DataMapper.finalize
     DataMapper.auto_upgrade!
@@ -19,7 +19,7 @@ module Anita
   end
 
   def self.start
-    start_db
+    setup_db
     start_bot
   end
 end

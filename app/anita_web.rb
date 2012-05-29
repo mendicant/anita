@@ -9,7 +9,7 @@ require_relative "../lib/anita"
 class AnitaWeb < Sinatra::Base
   configure do
     mime_type(:markdown, "text/plain")
-    Anita.start_db
+    Anita.setup_db
   end
 
   get("/") do
