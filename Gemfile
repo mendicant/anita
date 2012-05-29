@@ -16,6 +16,7 @@ group :development do
   gem "capistrano", "~> 2.12.0"
   gem "rspec",      "~> 2.10.0"
   gem "timecop",    "~> 0.3.5"
+  gem "capybara",   "~> 1.1.2"
   gem "shotgun"
   gem "pry"
 end
