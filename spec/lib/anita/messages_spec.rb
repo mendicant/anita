@@ -1,9 +1,4 @@
 require_relative "../../spec_helper"
-require_relative "../../../lib/anita/messages"
-
-DataMapper.setup(:default, "sqlite3::memory:")
-DataMapper.finalize
-DataMapper.auto_migrate!
 
 describe Anita::Messages do
   before do

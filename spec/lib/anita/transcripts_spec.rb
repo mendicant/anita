@@ -1,12 +1,5 @@
 require_relative "../../spec_helper"
-require_relative "../../../lib/anita/transcripts"
-require_relative "../../../lib/anita/messages"
-
 require "json"
-
-DataMapper.setup(:default, "sqlite3::memory:")
-DataMapper.finalize
-DataMapper.auto_migrate!
 
 describe Anita::Transcripts do
   before do
