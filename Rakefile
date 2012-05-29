@@ -1,4 +1,5 @@
 require "fileutils"
+require "rspec/core/rake_task"
 
 desc "Start bot (runs setup if needed)."
 task "start" => ["setup"] do
@@ -31,3 +32,6 @@ task "setup:configuration" do
     system("$EDITOR #{dir}/environment.rb")
   end
 end
+
+desc "Run all tests."
+RSpec::Core::RakeTask.new(:spec)
