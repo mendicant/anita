@@ -4,6 +4,7 @@ module Anita
     PASSWORD = "a_sekret_password"
     SERVER   = "irc.freenode.net"
     CHANNELS = ["#cinch-bots"]
-    DB       = File.expand_path(File.dirname(__FILE__) + "/../data/anita.db")
+    DB_PATH  = File.expand_path(File.dirname(__FILE__) + "/../data/anita.db")
+    DB       = "sqlite3://#{DB_PATH}"
   end
 end
