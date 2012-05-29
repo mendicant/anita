@@ -30,7 +30,7 @@ class AnitaWeb < Sinatra::Base
     to      = options[:to]
     format  = format_for(options[:format] || "html")
 
-    transcript = Anita::Transcripts.find(channel, from, to)
+    transcript = Anita::Transcripts.load(channel, from, to)
 
     case format
     when :html
