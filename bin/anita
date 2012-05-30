@@ -1,6 +1,5 @@
 #!/usr/bin/env ruby
 
-require_relative "../config/environment.rb"
 require_relative "../lib/anita"
 
-Anita::Bot.start
+Anita.start

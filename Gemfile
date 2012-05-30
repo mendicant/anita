@@ -14,6 +14,9 @@ group :development do
   gem "foreman",    "~> 0.46.0"
   gem "rake",       "~> 0.9.2.2"
   gem "capistrano", "~> 2.12.0"
+  gem "rspec",      "~> 2.10.0"
+  gem "timecop",    "~> 0.3.5"
+  gem "rack-test",  "~> 0.6.1"
   gem "shotgun"
   gem "pry"
 end
