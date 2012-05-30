@@ -1,5 +1,5 @@
 require "timecop"
-require_relative "../lib/anita"
+require_relative "../../lib/anita"
 
 ts = Time.utc(2012, 1, 1)
 Timecop.freeze(ts)
