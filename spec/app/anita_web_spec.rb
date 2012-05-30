@@ -41,9 +41,9 @@ describe AnitaWeb do
     context "as markdown" do
       subject{ get("#{url}.markdown") }
 
-      its(:body){ should include("## #{message.channel}")             }
-      its(:body){ should include("**#{message.nick}**")                  }
-      its(:body){ should include(message.text)                         }
+      its(:body){ should include("## #{message.channel}")            }
+      its(:body){ should include("**#{message.nick}**")              }
+      its(:body){ should include(message.text)                       }
       its(:body){ should include("*#{message.humanized_timestamp}*") }
     end
   end
