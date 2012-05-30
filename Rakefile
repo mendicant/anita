@@ -33,5 +33,12 @@ task "setup:configuration" do
   end
 end
 
-desc "Run all tests."
-RSpec::Core::RakeTask.new(:spec)
+desc "Run lib/ tests."
+RSpec::Core::RakeTask.new("spec:lib") do |t|
+  t.pattern = "spec/lib/**/*_spec.rb"
+end
+
+desc "Run app/ tests."
+RSpec::Core::RakeTask.new("spec:app") do |t|
+  t.pattern = "spec/app/**/*_spec.rb"
+end

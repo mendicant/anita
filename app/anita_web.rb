@@ -3,12 +3,9 @@ require "date"
 require "json"
 require "haml"
 
-require_relative "../lib/anita"
-
 class AnitaWeb < Sinatra::Base
   configure do
     mime_type(:markdown, "text/plain")
-    Anita.setup_db
   end
 
   get("/") do
