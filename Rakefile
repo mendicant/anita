@@ -42,3 +42,8 @@ desc "Run app/ tests."
 RSpec::Core::RakeTask.new("spec:app") do |t|
   t.pattern = "spec/app/**/*_spec.rb"
 end
+
+desc "Run all tests."
+task :spec => ["spec:lib", "spec:app"]
+
+task :default => :spec
