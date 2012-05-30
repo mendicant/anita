@@ -4,11 +4,11 @@ module Anita
     include Enumerable
 
     def self.record(channel, nick, text)
-      Anita::Messages.create(channel: channel, nick: nick, text: text)
+      Messages.create(channel: channel, nick: nick, text: text)
     end
 
     def self.load(channel, from, to)
-      messages = Anita::Messages.all(channel: channel, timestamp: (from..to))
+      messages = Messages.all(channel: channel, timestamp: (from..to))
       Transcripts.new(messages)
     end
 

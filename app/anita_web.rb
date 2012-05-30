@@ -3,7 +3,6 @@ require "date"
 require "json"
 require "haml"
 
-require_relative "../config/environment"
 require_relative "../lib/anita"
 
 class AnitaWeb < Sinatra::Base

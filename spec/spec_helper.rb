@@ -1,20 +1,15 @@
-require "dm-core"
-require "dm-migrations"
 require "timecop"
+require_relative "../lib/anita"
 
 ts = Time.utc(2012, 1, 1)
 Timecop.freeze(ts)
 
-module Anita
-  module Config
-    NICK     = "test-bot"
-    PASSWORD = ""
-    SERVER   = "irc.freenode.net"
-    CHANNELS = ["#cinch-bots"]
-    DB       = "sqlite3::memory:"
-  end
+Anita.configure do |c|
+  c.nick     = "test-bot"
+  c.password = ""
+  c.server   = "irc.freenode.net"
+  c.channels = ["#cinch-bots"]
+  c.database = "sqlite3::memory:"
 end
-
-require_relative "../lib/anita"
 
 Anita.setup_db

@@ -1,10 +1,9 @@
-module Anita
-  module Config
-    NICK     = "an_awesome_bot"
-    PASSWORD = "a_sekret_password"
-    SERVER   = "irc.freenode.net"
-    CHANNELS = ["#cinch-bots"]
-    DB_PATH  = File.expand_path(File.dirname(__FILE__) + "/../data/anita.db")
-    DB       = "sqlite3://#{DB_PATH}"
-  end
+Anita.configure do |c|
+  c.nick     = "an_awesome_bot"
+  c.password = "a_sekret_password"
+  c.server   = "irc.freenode.net"
+  c.channels = ["#cinch-bots"]
+
+  path       = File.expand_path(File.dirname(__FILE__) + "/../data/anita.db")
+  c.database = "sqlite3://#{path}"
 end

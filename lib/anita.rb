@@ -6,16 +6,22 @@ require "forwardable"
 require_relative "anita/bot"
 require_relative "anita/messages"
 require_relative "anita/transcripts"
+require_relative "anita/configuration"
 
 module Anita
+  def self.configure
+    yield(Configuration)
+  end
+
   def self.setup_db
-    DataMapper.setup(:default, Anita::Config::DB)
+    DataMapper.setup(:default, Configuration.database)
     DataMapper.finalize
     DataMapper.auto_upgrade!
   end
 
   def self.start_bot
-    Bot.start
+    bot = Bot.new
+    bot.start
   end
 
   def self.start
@@ -23,3 +29,5 @@ module Anita
     start_bot
   end
 end
+
+require_relative "../config/environment"
