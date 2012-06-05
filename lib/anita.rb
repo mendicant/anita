@@ -30,5 +30,5 @@ module Anita
   end
 end
 
-config = File.expand_path("../../config/environment.rb")
+config = File.expand_path("../../config/environment.rb", __FILE__)
 require_relative config if File.exists?(config)
