@@ -1,3 +1,6 @@
+[![Build Status](http://travis-ci.org/mendicant/anita.png)](http://travis-ci.org/mendicant/anita)
+[![Dependency Status](https://gemnasium.com/mendicant/anita.png)](https://gemnasium.com/mendicant/anita)
+
 Anita
 =====
 
