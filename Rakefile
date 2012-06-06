@@ -11,7 +11,7 @@ end
 desc "Run all setup tasks."
 task "setup" => ["setup:dependencies", "setup:configuration"] do
   dir = File.expand_path("../data", __FILE__)
-  FileUtils.mkdir(dir)
+  FileUtils.mkdir_p(dir)
 end
 
 desc "Install dependencies."
