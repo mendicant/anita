@@ -3,10 +3,11 @@ module Anita
     def initialize
       self.bot = Cinch::Bot.new do
         configure do |c|
-          c.nick     = Configuration.nick
-          c.password = Configuration.password
-          c.server   = Configuration.server
-          c.channels = Configuration.channels
+          c.nick            = Configuration.nick
+          c.password        = Configuration.password
+          c.server          = Configuration.server
+          c.channels        = Configuration.channels
+          c.plugins.plugins = Configuration.plugins
         end
 
         on(:channel) do |message|
