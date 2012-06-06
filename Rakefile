@@ -9,7 +9,10 @@ task "start" => ["setup"] do
 end
 
 desc "Run all setup tasks."
-task "setup" => ["setup:dependencies", "setup:configuration"]
+task "setup" => ["setup:dependencies", "setup:configuration"] do
+  dir = File.expand_path("../data", __FILE__)
+  FileUtils.mkdir(dir)
+end
 
 desc "Install dependencies."
 task "setup:dependencies" do
