@@ -8,6 +8,8 @@ require_relative "anita/messages"
 require_relative "anita/transcripts"
 require_relative "anita/configuration"
 
+require_relative "anita/plugins/dude_sweet"
+
 module Anita
   def self.configure
     yield(Configuration)

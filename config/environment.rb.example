@@ -6,4 +6,6 @@ Anita.configure do |c|
 
   path       = File.expand_path(File.dirname(__FILE__) + "/../data/anita.db")
   c.database = "sqlite3://#{path}"
+
+  c.plugins  = [Anita::Plugins::DudeSweet]
 end
