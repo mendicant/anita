@@ -9,6 +9,7 @@ gem "dm-core",            "~> 1.2.0"
 gem "dm-migrations",      "~> 1.2.0"
 gem "dm-validations",     "~> 1.2.0"
 gem "dm-sqlite-adapter",  "~> 1.2.0"
+gem "rack",               "~> 1.5.2"
 
 group :development do
   gem "foreman",    "~> 0.46.0"
